@@ -5,19 +5,19 @@ Created on Feb 24, 2017
 '''
 # a = first set of co-ords
 # b = second set of co-ords
-def turnOn(a,b):
+def turnOn(a,b,c,d):
     '''Function intended to handle turnOn feature'''
     output = []
-    for elem in range (a,b+1):
+    #for elem in range (a,b+1):
         #if element is in range, make it True i.e. Turn on light
         #ignroing if light is already on
-        elem == True;
-        output += elem
+        #elem == True;
+        #output += elem
     return output;
 
 
 def switch(a,b):
-    '''Function intended to switch on lights off'''
+    '''Function intended to switch on or off lights'''
     output = []
     for elem in range (a,b+1):
         #if elem is True (on) make False (off) or vice versa
@@ -46,28 +46,41 @@ def fileRead(file):
     '''initial testing without command line input'''
     with open(file) as file:
         x = file.readline()
-        #L = int(x)
-        L = 10
-        return L
+        L = int(x)
+        #return L
         for line in file:
             
             if line.startswith("turn on"):
-                #a = (w,x); #where w and x are the first two int values on the line
-                #b = (y,z); #where y and z are the second two in values on the line
-                #turnOn(a,b)
                 print("Turn on detected")
+                print(line.split(" ")[2])
+                print(line.split(" ")[4])
+                print()
+                #a = 
+                #c =
+                #c =
+                #d =
+                #turnOn(a,b,c,d)
+                
                 
             elif line.startswith("switch"):
+                print("Switch detected")
+                print(line.split(" ")[1])
+                print(line.split(" ")[3])
+                print()
                 #a = (w,x); #where w and x are the first two int values on the line
                 #b = (y,z); #where y and z are the second two in values on the line
                 #switch(a,b)
-                print("Switch detected")
+                
                 
             elif line.startswith("turn off"):
+                print("Turn off detected")
+                print(line.split(" ")[2])
+                print(line.split(" ")[4])
+                print()
                 #a = (w,x); #where w and x are the first two int values on the line
                 #b = (y,z); #where y and z are the second two in values on the line
                 #turnOff(a,b)
-                print("Turn off detected")
+                
     
         
         
@@ -77,19 +90,20 @@ def fileRead(file):
 
 def plotMap(L):
     '''function to plot the map for testing purposes'''
-    line = [0] * (L-1)
+    line = [False] * (L-1)
     output = []
-    for i in range(0,L):
+    for i in range(0,L-1):
         output.append(line)
     
     for elem in output:
         print(elem)
-        
+     
+    return output
+    
 def main():
     '''main function'''
     q = fileRead("input_assign3.txt")
-    plotMap(q)
-    #print(plotMap(q))
+
     
     
 if __name__ == '__main__':
