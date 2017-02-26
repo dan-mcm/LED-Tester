@@ -3,17 +3,16 @@ Created on Feb 24, 2017
 
 @author: Daniel McMahon
 '''
-import unittest
-import src.main
+#using template from last SE practical unittest....
+import sys
+from nose.tools import ok_,eq_
+from src.main import *
 
+def testcalculate():
+    #ok_(calculate(2,3),6)
+    pass;
 
-class Test(unittest.TestCase):
+def testversion():
+    #eq_(sys.version_info[0], 3, 'Python is not version 3')
+    pass;
 
-
-    def testName(self):
-        pass
-
-
-if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
-    unittest.main()

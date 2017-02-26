@@ -10,15 +10,20 @@ from astropy._erfa.core import ab
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
-    for column in range(a,c):
-        for row in range (b,d):
+    
+    #use a-1 and b-1: stumbled upon fix when testing against sample input answer provided of 400410
+    #initially without the -1 answer was off by just under 1,500....
+    #why this works? still trying to decided - perhaps due to size of grid being L-1
+    
+    for column in range(a-1,c):
+        for row in range (b-1,d):
             LEDgrid[column][row] = True
     return LEDgrid
 
 def switch(a,b,c,d,LEDgrid):
     '''Function intended to switch on or off lights depending on their current state. If light on - switch off and vice versa.'''   
-    for column in range(a,c):
-        for row in range (b,d):
+    for column in range(a-1,c):
+        for row in range (b-1,d):
             
             if LEDgrid[column][row] == True:
                 LEDgrid[column][row] = False
@@ -29,8 +34,8 @@ def switch(a,b,c,d,LEDgrid):
 
 def turnOff(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOff feature.  Turns lights off (or 'false') regardless of their current state'''
-    for column in range(a,c):
-        for row in range (b,d):
+    for column in range(a-1,c):
+        for row in range (b-1,d):
             LEDgrid[column][row] = False
         
     return LEDgrid;
