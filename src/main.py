@@ -18,15 +18,15 @@ def turnOn(a,b,c,d,LEDgrid):
     #initially tested a,c+1 and b,d+1 but index fell out of range..
     #concern here is if on other side of spectrum 0,0 same issue will apply
     
-    for column in range(a,c):
-        for row in range (b,d):
+    for column in range(a-1,c):
+        for row in range (b-1,d):
             LEDgrid[column][row] = True
     return LEDgrid
 
 def switch(a,b,c,d,LEDgrid):
     '''Function intended to switch on or off lights depending on their current state. If light on - switch off and vice versa.'''   
-    for column in range(a,c):
-        for row in range (b,d):
+    for column in range(a-1,c):
+        for row in range (b-1,d):
             
             if LEDgrid[column][row] == True:
                 LEDgrid[column][row] = False
@@ -37,8 +37,8 @@ def switch(a,b,c,d,LEDgrid):
 
 def turnOff(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOff feature.  Turns lights off (or 'false') regardless of their current state'''
-    for column in range(a,c):
-        for row in range (b,d):
+    for column in range(a-1,c):
+        for row in range (b-1,d):
             LEDgrid[column][row] = False
         
     return LEDgrid;
