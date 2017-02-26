@@ -48,19 +48,22 @@ def fileReadL(file):
 def applyChanges(file,L):
     '''Function that parses input from file and carries out various functions according to strings starting values'''
     for line in file.split('\n'):
-        if line.startswith("turn on"):
+        if (line.startswith("turn on")):
             ab = line.split(" ")[2]
             cd = line.split(" ")[4]
-                
-            a = int(ab.split(",")[0])
-            b = int(ab.split(",")[1])
-                
-            c = int(cd.split(",")[0])
-            d = int(cd.split(",")[1])
             
+            #test statement checking characters before and after , are numeric
+            #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
+            if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):    
+                a = int(ab.split(",")[0])
+                b = int(ab.split(",")[1])
+                    
+                c = int(cd.split(",")[0])
+                d = int(cd.split(",")[1])
+
             #checking the values are consistent before running function
             if(c>a and d>b):
-                #if all values are less then size of the array continue
+                #if all values are less the    n size of the array continue
                 #otherwise make them equal to size of the array, break out of that loop, and retry initial check
                 if(a<len(L) and b<len(L) and c<len(L) and d<len(L)):
                     x=turnOn(a,b,c,d,L)
@@ -82,11 +85,14 @@ def applyChanges(file,L):
             ab = line.split(" ")[1]
             cd = line.split(" ")[3]
             
-            a = int(ab.split(",")[0])
-            b = int(ab.split(",")[1])
-                
-            c = int(cd.split(",")[0])
-            d = int(cd.split(",")[1])
+            #test statement checking characters before and after , are numeric
+            #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
+            if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):
+                a = int(ab.split(",")[0])
+                b = int(ab.split(",")[1])
+                    
+                c = int(cd.split(",")[0])
+                d = int(cd.split(",")[1])
             
             #checking the values are consistent before running function
             if(c>a and d>b):
@@ -113,11 +119,14 @@ def applyChanges(file,L):
             ab = line.split(" ")[2]
             cd = line.split(" ")[4]
                 
-            a = int(ab.split(",")[0])
-            b = int(ab.split(",")[1])
-                
-            c = int(cd.split(",")[0])
-            d = int(cd.split(",")[1])
+            #test statement checking characters before and after , are numeric
+            #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
+            if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):
+                a = int(ab.split(",")[0])
+                b = int(ab.split(",")[1])
+                    
+                c = int(cd.split(",")[0])
+                d = int(cd.split(",")[1])
             
             #checking the values are consistent before running function
             if(c>a and d>b):
