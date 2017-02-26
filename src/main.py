@@ -59,11 +59,25 @@ def applyChanges(file,L):
             d = int(cd.split(",")[1])
             
             #checking the values are consistent before running function
-            if(c>a and d>b and a<len(L) and b<len(L) and c<len(L) and d<len(L)):
-                x=turnOn(a,b,c,d,L)
-                L=x
-                
-                
+            if(c>a and d>b):
+                #if all values are less then size of the array continue
+                #otherwise make them equal to size of the array, break out of that loop, and retry initial check
+                if(a<len(L) and b<len(L) and c<len(L) and d<len(L)):
+                    x=turnOn(a,b,c,d,L)
+                    L=x
+                elif(a>len(L)):
+                    a = len(L)
+                    break
+                elif(b>len(L)):
+                    b = len(L)
+                    break
+                elif(a>len(L)):
+                    c = len(L)
+                    break
+                elif(a>len(L)):
+                    d = len(L)
+                    break
+                    
         elif line.startswith("switch"):
             ab = line.split(" ")[1]
             cd = line.split(" ")[3]
@@ -75,9 +89,24 @@ def applyChanges(file,L):
             d = int(cd.split(",")[1])
             
             #checking the values are consistent before running function
-            if(c>a and d>b and a<len(L) and b<len(L) and c<len(L) and d<len(L)):
-                y=switch(a,b,c,d,L)
-                L=y
+            if(c>a and d>b):
+                #if all values are less then size of the array continue
+                #otherwise make them equal to size of the array, break out of that loop, and retry initial check
+                if(a<len(L) and b<len(L) and c<len(L) and d<len(L)):
+                    x=switch(a,b,c,d,L)
+                    L=x
+                elif(a>len(L)):
+                    a = len(L)
+                    break
+                elif(b>len(L)):
+                    b = len(L)
+                    break
+                elif(a>len(L)):
+                    c = len(L)
+                    break
+                elif(a>len(L)):
+                    d = len(L)
+                    break
                 
         elif line.startswith("turn off"):
                 
@@ -91,9 +120,24 @@ def applyChanges(file,L):
             d = int(cd.split(",")[1])
             
             #checking the values are consistent before running function
-            if(c>a and d>b and a<len(L) and b<len(L) and c<len(L) and d<len(L)):
-                z=turnOff(a,b,c,d,L)
-                L=z
+            if(c>a and d>b):
+                #if all values are less then size of the array continue
+                #otherwise make them equal to size of the array, break out of that loop, and retry initial check
+                if(a<len(L) and b<len(L) and c<len(L) and d<len(L)):
+                    x=turnOff(a,b,c,d,L)
+                    L=x
+                elif(a>len(L)):
+                    a = len(L)
+                    break
+                elif(b>len(L)):
+                    b = len(L)
+                    break
+                elif(a>len(L)):
+                    c = len(L)
+                    break
+                elif(a>len(L)):
+                    d = len(L)
+                    break
     
     return L
 
