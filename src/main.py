@@ -9,24 +9,18 @@ import urllib.request
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
+    #iniitally setup with (a-1,c) and (b-1,d) but would return error if 0,0 light appeared on file
+    #modified plotMap function accordingly to fix this
     
-    #use a-1 and b-1: stumbled upon fix when testing against sample input answer provided of 400410
-    #initially without the -1 answer was off by just under 1,500....
-    #why this works? I believe its due to range function...
-    #as its going from a to c-1 and b to d-1 in practice I have decremented the starting value
-    #so the right number of lights are affected
-    #initially tested a,c+1 and b,d+1 but index fell out of range..
-    #concern here is if on other side of spectrum 0,0 same issue will apply
-    
-    for column in range(a-1,c):
-        for row in range (b-1,d):
+    for column in range(a,c+1):
+        for row in range (b,d+1):
             LEDgrid[column][row] = True
     return LEDgrid
 
 def switch(a,b,c,d,LEDgrid):
     '''Function intended to switch on or off lights depending on their current state. If light on - switch off and vice versa.'''   
-    for column in range(a-1,c):
-        for row in range (b-1,d):
+    for column in range(a,c+1):
+        for row in range (b,d+1):
             
             if LEDgrid[column][row] == True:
                 LEDgrid[column][row] = False
@@ -37,8 +31,8 @@ def switch(a,b,c,d,LEDgrid):
 
 def turnOff(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOff feature.  Turns lights off (or 'false') regardless of their current state'''
-    for column in range(a-1,c):
-        for row in range (b-1,d):
+    for column in range(a,c+1):
+        for row in range (b,d+1):
             LEDgrid[column][row] = False
         
     return LEDgrid;
@@ -101,8 +95,12 @@ def applyChanges(file,L):
 def plotMap(L):
     '''function to create the starting LEDgrid'''
     plottedMap = []
-    for i in range(0,L-1):
-        plottedMap.append([False] * (L-1))
+    
+    #these were initially set to L-1
+    #due to range function logic need these to go up as far as L to get accurate output
+    
+    for i in range(0,L):
+        plottedMap.append([False] * (L))
         
     return plottedMap
     
