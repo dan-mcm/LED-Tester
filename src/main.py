@@ -9,8 +9,8 @@ import urllib.request
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
-    #iniitally setup with (a-1,c) and (b-1,d) but would return error if 0,0 light appeared on file
-    #modified plotMap function accordingly to fix this
+    #initially setup with (a-1,c) and (b-1,d) but would return error if 0,0 light appeared on file
+    #modified plotMap function accordingly to preempt this issue
     
     for column in range(a,c+1):
         for row in range (b,d+1):
@@ -47,7 +47,6 @@ def fileReadL(file):
     
 def applyChanges(file,L):
     '''Function that parses input from file and carries out various functions according to strings starting values'''
-
     for line in file.split('\n'):
         if line.startswith("turn on"):
             ab = line.split(" ")[2]
@@ -58,9 +57,11 @@ def applyChanges(file,L):
                 
             c = int(cd.split(",")[0])
             d = int(cd.split(",")[1])
-
-            x=turnOn(a,b,c,d,L)
-            L=x
+            
+            #checking the values are consistent before running function
+            if(c>a and d>b and a<len(L) and b<len(L) and c<len(L) and d<len(L)):
+                x=turnOn(a,b,c,d,L)
+                L=x
                 
                 
         elif line.startswith("switch"):
@@ -72,9 +73,11 @@ def applyChanges(file,L):
                 
             c = int(cd.split(",")[0])
             d = int(cd.split(",")[1])
-                
-            y=switch(a,b,c,d,L)
-            L=y
+            
+            #checking the values are consistent before running function
+            if(c>a and d>b and a<len(L) and b<len(L) and c<len(L) and d<len(L)):
+                y=switch(a,b,c,d,L)
+                L=y
                 
         elif line.startswith("turn off"):
                 
@@ -86,9 +89,11 @@ def applyChanges(file,L):
                 
             c = int(cd.split(",")[0])
             d = int(cd.split(",")[1])
-                
-            z=turnOff(a,b,c,d,L)
-            L=z
+            
+            #checking the values are consistent before running function
+            if(c>a and d>b and a<len(L) and b<len(L) and c<len(L) and d<len(L)):
+                z=turnOff(a,b,c,d,L)
+                L=z
     
     return L
 
