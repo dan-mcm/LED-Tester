@@ -6,7 +6,6 @@ Created on Feb 24, 2017
 
 import argparse
 import urllib.request
-from astropy._erfa.core import ab
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
