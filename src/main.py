@@ -7,7 +7,6 @@ Created on Feb 24, 2017
 import argparse
 import urllib.request
 import re
-from conda.core.linked_data import linked
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
