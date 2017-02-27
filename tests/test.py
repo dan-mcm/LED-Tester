@@ -34,9 +34,6 @@ class Test(unittest.TestCase):
     #Hmm this is broken........... takes all as false....   
     def test_applyChanges_surplusInput(self):
         self.assertEqual(src.main.applyChanges("turn on 1,1 through 5,5",[[False,False,False,False],[False,False,False,False],[False,False,False,False],[False,False,False,False]]),[[False,False,False,False],[False,True,True,True],[False,True,True,True],[False,True,True,True]])
-
-    def test_counter(self):
-        pass
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
