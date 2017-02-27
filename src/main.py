@@ -7,6 +7,7 @@ Created on Feb 24, 2017
 import argparse
 import urllib.request
 import re
+from conda.core.linked_data import linked
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
@@ -220,20 +221,25 @@ def main():
     parser.add_argument('--input', help='input help')
     args = parser.parse_args()
     link = args.input #replace link with filename to read standard files
-    
+
+    if link.startswith("http"):
     #reading the link
-    req=urllib.request.urlopen(link)
-    buffer=req.read().decode('utf-8')
+        req=urllib.request.urlopen(link)
+        buffer=req.read().decode('utf-8')
+    else:
+    #reading a file
+        buffer = link.open() 
     
     #setting value L from file
-    L = fileReadL(buffer)#replace buffer with filename to read standard files
+    L = fileReadL(buffer)
     
     #setting up grid based on L value
     LEDgrid = plotMap(L)
     
     #applying changes with turnOn,Switch,turnOff functions called in applyChanges function
-    changes=applyChanges(buffer,LEDgrid)#replace buffer with filename to read standard files
+    changes=applyChanges(buffer,LEDgrid)
     LEDgrid=changes
+    
     #note: functions called within applyChanges return the updated LEDgrid
     #the below prints out total number of lights on by iterating through values of a list inside a list
     counter = 0
@@ -243,7 +249,8 @@ def main():
             if value == True:
                 counter += 1
     
-    print("Total number of lights on:", counter)
+    print("File Name:", link)
+    print("Number of Lights On:", counter)
     
 if __name__ == '__main__':
     main()
