@@ -61,7 +61,7 @@ def applyChanges(file,L):
         if (line.startswith("turn on")):
             ab = line.split(" ")[2]
             cd = line.split(" ")[4]
-            print(ab,cd)
+
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
             if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):    
