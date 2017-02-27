@@ -6,6 +6,7 @@ Created on Feb 24, 2017
 
 import argparse
 import urllib.request
+import re
 
 def turnOn(a,b,c,d,LEDgrid):
     '''Function intended to handle turnOn feature. Turns lights on (or 'true') regardless of their current state'''
@@ -48,6 +49,15 @@ def fileReadL(file):
 def applyChanges(file,L):
     '''Function that parses input from file and carries out various functions according to strings starting values'''
     for line in file.split('\n'):
+        
+        #removes trailing whitespace if any at start of line
+        line = line.lstrip()
+        
+        #removes space before , in line if there is one
+        line = leftCommaSpace = re.sub(r'\s([,](?:\s|$))', r'\1', line)
+        #removes space after , in line if there is one
+        line = bothCommasParsed = re.sub(r'([,]($|\s?))\s', r'\1', leftCommaSpace)
+        
         if (line.startswith("turn on")):
             ab = line.split(" ")[2]
             cd = line.split(" ")[4]
