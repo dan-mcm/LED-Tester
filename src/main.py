@@ -52,9 +52,7 @@ def applyChanges(file,L):
         
         #removes trailing whitespace if any at start of line
         line = line.lstrip()
-        
-        #this doesn't account for negative numbers!!!
-        print(line)
+        #this doesnt work! Doesn't account for minus symbol...
         #removes space before , in line if there is one
         line = re.sub(r'\s([,](?:\s|$))', r'\1', line)
         #removes space after , in line if there is one
@@ -63,51 +61,42 @@ def applyChanges(file,L):
         if (line.startswith("turn on")):
             ab = line.split(" ")[2]
             cd = line.split(" ")[4]
-            
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
-            if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):    
+            if(ab.count(",")==1 and cd.count(",")==1):    
                 a = int(ab.split(",")[0])
                 b = int(ab.split(",")[1])
-                    
                 c = int(cd.split(",")[0])
                 d = int(cd.split(",")[1])
-                print(a,b,c,d)
+                
+                
                 #checking the values are consistent before running function
                 if(c>a and d>b):
                     #if all values are less then size of the array and greater than 0 continue
                     #otherwise make them equal to size of the array, break out of that loop, and retry initial check
                     
                     if(a>len(L)):
-                        print("A too big - shrinking...")
                         a = len(L)-1
     
                     if(b>len(L)):
-                        print("B too big - shrinking...")
                         b = len(L)-1
                         
                     if(c>len(L)):
-                        print("C too big - shrinking...")
                         c = len(L)-1
                         
                     if(d>len(L)):
-                        print("D too big - shrinking...")
                         d = len(L)-1
                         
                     if(a<0):
-                        print("A too small - making 0...")
                         a = 0
                         
                     if(b<0):
-                        print("A too small - making 0...")
                         b = 0
                         
                     if(c<0):
-                        print("A too small - making 0...")
                         c = 0
                         
                     if(d<0):
-                        print("A too small - making 0...")
                         d = 0
                     
                     if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>=0 and b>=0 and c>=0 and d>=0):
@@ -121,7 +110,7 @@ def applyChanges(file,L):
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
             
-            if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):
+            if(ab.count(",")==1 and cd.count(",")==1):
                 a = int(ab.split(",")[0])
                 b = int(ab.split(",")[1])
                     
@@ -168,7 +157,7 @@ def applyChanges(file,L):
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
             
-            if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):
+            if(ab.count(",")==1 and cd.count(",")==1):
                 a = int(ab.split(",")[0])
                 b = int(ab.split(",")[1])
                     
