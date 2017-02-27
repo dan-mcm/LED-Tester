@@ -79,19 +79,15 @@ def applyChanges(file,L):
                 
                 if(a>len(L)):
                     a = len(L)
-                    print("A is: ", a)
-                    
+
                 elif(b>len(L)):
                     b = len(L)
-                    print("B is: ", b)
                     
                 elif(c>len(L)):
                     c = len(L)
-                    print("C is: ", c)
                     
                 elif(d>len(L)):
                     d = len(L)
-                    print("D is: ", d)
                     
                 elif(a<0):
                     a = 0
@@ -204,7 +200,6 @@ def applyChanges(file,L):
                     L=x
                     
     
-    print("Immediately returning L...")
     return L
 
 def plotMap(L):
