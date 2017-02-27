@@ -54,14 +54,14 @@ def applyChanges(file,L):
         line = line.lstrip()
         
         #removes space before , in line if there is one
-        line = leftCommaSpace = re.sub(r'\s([,](?:\s|$))', r'\1', line)
+        line = re.sub(r'\s([,](?:\s|$))', r'\1', line)
         #removes space after , in line if there is one
-        line = bothCommasParsed = re.sub(r'([,]($|\s?))\s', r'\1', leftCommaSpace)
+        line = re.sub(r'([,]($|\s?))\s', r'\1', line)
         
         if (line.startswith("turn on")):
             ab = line.split(" ")[2]
             cd = line.split(" ")[4]
-            
+            print(ab,cd)
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
             if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):    
@@ -73,35 +73,41 @@ def applyChanges(file,L):
 
             #checking the values are consistent before running function
             if(c>a and d>b):
+                
                 #if all values are less then size of the array and greater than 0 continue
                 #otherwise make them equal to size of the array, break out of that loop, and retry initial check
-                if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>0 and b>0 and c>0 and d>0):
-                    x=turnOn(a,b,c,d,L)
-                    L=x
-                elif(a>len(L)):
+                
+                if(a>len(L)):
                     a = len(L)
-                    break
+                    print("A is: ", a)
+                    
                 elif(b>len(L)):
                     b = len(L)
-                    break
-                elif(a>len(L)):
+                    print("B is: ", b)
+                    
+                elif(c>len(L)):
                     c = len(L)
-                    break
-                elif(a>len(L)):
+                    print("C is: ", c)
+                    
+                elif(d>len(L)):
                     d = len(L)
-                    break
+                    print("D is: ", d)
+                    
                 elif(a<0):
                     a = 0
-                    break
+                    
                 elif(b<0):
                     b = 0
-                    break
+                    
                 elif(c<0):
                     c = 0
-                    break
+                    
                 elif(d<0):
                     d = 0
-                    break
+                
+                if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>0 and b>0 and c>0 and d>0):
+                    x=turnOn(a,b,c,d,L)
+                    L=x    
                     
         elif line.startswith("switch"):
             ab = line.split(" ")[1]
@@ -109,6 +115,7 @@ def applyChanges(file,L):
             
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
+            
             if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):
                 a = int(ab.split(",")[0])
                 b = int(ab.split(",")[1])
@@ -120,33 +127,33 @@ def applyChanges(file,L):
             if(c>a and d>b):
                 #if all values are less then size of the array and greater than 0 continue
                 #otherwise make them equal to size of the array, break out of that loop, and retry initial check
-                if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>0 and b>0 and c>0 and d>0):
-                    x=switch(a,b,c,d,L)
-                    L=x
-                elif(a>len(L)):
+                if(a>len(L)):
                     a = len(L)
-                    break
+                    
                 elif(b>len(L)):
                     b = len(L)
-                    break
+                    
                 elif(c>len(L)):
                     c = len(L)
-                    break
+                    
                 elif(d>len(L)):
                     d = len(L)
-                    break
+                    
                 elif(a<0):
                     a = 0
-                    break
+                    
                 elif(b<0):
                     b = 0
-                    break
+                    
                 elif(c<0):
                     c = 0
-                    break
+                    
                 elif(d<0):
                     d = 0
-                    break
+                
+                if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>0 and b>0 and c>0 and d>0):
+                    x=switch(a,b,c,d,L)
+                    L=x    
                 
         elif line.startswith("turn off"):
                 
@@ -155,6 +162,7 @@ def applyChanges(file,L):
                 
             #test statement checking characters before and after , are numeric
             #the initial ab.count and cd.count ensure that there is in fact a delimiter in the parsed data
+            
             if(ab.count(",")==1 and cd.count(",")==1 and ab.split(",")[0].isnumeric() and ab.split(",")[1].isnumeric() and cd.split(",")[0].isnumeric() and cd.split(",")[1].isnumeric()):
                 a = int(ab.split(",")[0])
                 b = int(ab.split(",")[1])
@@ -166,34 +174,37 @@ def applyChanges(file,L):
             if(c>a and d>b):
                 #if all values are less then size of the array and greater than 0 continue
                 #otherwise make them equal to size of the array, break out of that loop, and retry initial check
+                
+                if(a>len(L)):
+                    a = len(L)
+                    
+                elif(b>len(L)):
+                    b = len(L)
+                    
+                elif(c>len(L)):
+                    c = len(L)
+                    
+                elif(d>len(L)):
+                    d = len(L)
+                    
+                elif(a<0):
+                    a = 0
+                    
+                elif(b<0):
+                    b = 0
+                    
+                elif(c<0):
+                    c = 0
+                    
+                elif(d<0):
+                    d = 0
+                    
                 if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>0 and b>0 and c>0 and d>0):
                     x=turnOff(a,b,c,d,L)
                     L=x
-                elif(a>len(L)):
-                    a = len(L)
-                    break
-                elif(b>len(L)):
-                    b = len(L)
-                    break
-                elif(a>len(L)):
-                    c = len(L)
-                    break
-                elif(a>len(L)):
-                    d = len(L)
-                    break
-                elif(a<0):
-                    a = 0
-                    break
-                elif(b<0):
-                    b = 0
-                    break
-                elif(c<0):
-                    c = 0
-                    break
-                elif(d<0):
-                    d = 0
-                    break
+                    
     
+    print("Immediately returning L...")
     return L
 
 def plotMap(L):
