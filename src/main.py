@@ -17,7 +17,7 @@ def turnOn(a,b,c,d,LEDgrid):
         for row in range (b,d+1):
             LEDgrid[column][row] = True
     return LEDgrid
-
+ 
 def switch(a,b,c,d,LEDgrid):
     '''Function intended to switch on or off lights depending on their current state. If light on - switch off and vice versa.'''   
     for column in range(a,c+1):
@@ -51,7 +51,7 @@ def applyChanges(file,L):
     for line in file.split('\n'):
         
         #removes trailing whitespace if any at start of line
-        line = line.lstrip()
+        #line = line.lstrip()
         #this doesnt work! Doesn't account for minus symbol...
         #removes space before , in line if there is one
         line = re.sub(r'\s([,](?:\s|$))', r'\1', line)
@@ -196,7 +196,10 @@ def applyChanges(file,L):
                     if(a<len(L) and b<len(L) and c<len(L) and d<len(L) and a>=0 and b>=0 and c>=0 and d>=0):
                         x=turnOff(a,b,c,d,L)
                         L=x
-                    
+                        
+        #commented out test below - this prints out any lines not processed - useful for error checking
+        #else:
+            #print("Not Processed:",line)
     
     return L
 
